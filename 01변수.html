@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수</title>
+</head>
+<body>
+    
+    <h1 id="title">id를 통해 내용을 작성합니다</h1>
+    <input type="text" name="text" id="input" value="안녕">
+
+
+    <!--자바스크립트-->
+    <script>
+        // 변수는 값을 담아서 저장할 수 있다
+        let num = 10;
+        // = 기호는 오른쪽에 작성된 값을 왼쪽에 할당한다
+        let numTemp = num;
+        // 오른쪽에 식이 들어가 있으면 그 내용을 다 실행하고 할당한다
+        let sum = numTemp+num;
+
+        // 변수 이름을 통해서 값을 꺼내서 사용할 수 있다
+        console.log (num+10);
+
+
+        // 복합대입연산자
+        let numOpar = 0;
+        // 현재 변수에 1을 더해줄 때
+        numOpar = numOpar +1; //numOpar : 1
+        console.log(numOpar);
+
+        //복합대입연산자를 이용해 1 더해줌
+        numOpar += 1; numOpar //numOpar : 2
+        console.log(numOpar);
+
+        numOpar *= 3; //numOpar : 6
+        console.log(numOpar);
+
+
+
+        //증감연산자 : 1씩 증감
+        numOpar++; //numOpar : 7
+        console.log(numOpar);
+
+        // 후위연산자 : 가장 마지막에 계산
+        // 실행 순서 : 1) console.log();, 2)numOpar++
+        console.log(numOpar++); //numOpar : 7
+        console.log(numOpar); //numOpar : 8
+        
+
+        // 전위연산자 : 가장 처음에 계산
+        // 실행순서 : 1) ++numOpar, 2)console.log();
+        console.log(++numOpar); //numOpar : 9
+        console.log(numOpar); //numOpar : 9
+
+        // 일반 계산식과 함께 사용할 때도 가장 먼저 계산
+        // 실행순서 : 1)++numOpar, 2) /5, 3)console.log()
+        console.log(++numOpar/5); //numOpar : 2
+
+
+
+
+        /* 복합대입연산자와 증감연산자 실습*/
+        let sumNum = 0;
+        sumNum = sumNum + 1;
+        console.log("sumNum: ",sumNum); //sumNum : 1
+
+        // 복합대입연산자
+        sumNum += 1;
+        console.log("sumNum: ",sumNum); //sumNum : 2
+
+        // 증감연산자
+        sumNum++;
+        console.log("sumNum: ",sumNum); //sumNum : 3
+
+        // 1씩 감소
+        sumNum = sumNum -1;
+        console.log("sumNum: ",sumNum); //sumNum : 2
+
+        // 복합대입연산자
+        sumNum -= 1;
+        console.log("sumNum: ",sumNum); //sumNum : 1
+
+        // 증감연산자
+        sumNum--;
+        console.log("sumNum: ",sumNum); //sumNum : 0        
+
+
+
+        /* 콘솔 또는 HTML에 출력하기 위한 명령어 */
+        console.log("콘솔에 내용을 출력합니다")
+        alert("경고창에 내용을 출력합니다")
+        document.getElementById('title').innerHTML = "id를 통해 태그를 찾고 값을 할당할 수 있다"
+
+        /* 갑을 입력하는 방법 */
+        // 창을 띄워서 값 가져오기
+        let name = prompt("이름을 입력하세요");
+        alert(name);
+        
+        // id를 통해서 input 태그에 있는 value값 가져오기
+        let inputValue = document.getElementById('input').value;
+        console.log(inputValue)
+    </script>
+</body>
+</html>
