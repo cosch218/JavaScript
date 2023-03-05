@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>switch 조건문 실습</title>
+</head>
+<body>
+  <!-- 자바스크립트 -->
+  <script>
+    // 1. 변수 : score
+    // 2. 조건식 / 참일 때 출력할 내용 : 
+    //  score == "A" / 참 잘했습니다
+    //  score == "B" / 잘했습니다
+    //  score == "C" / 아쉽습니다
+    //  score == "D" / 분발하세요
+    //  그 외의 값은 default / 잘못된 점수입니다
+    let score = "B"
+    switch (score) {
+      case "A" :
+        document.write("<p>참 잘했습니다</p>");
+        break;
+      case "B" : 
+        document.write("<p>잘했습니다</p>");
+        break;
+      case "C" :
+        document.write("<p>아쉽습니다</p>");
+        break;
+      case "D" :
+        document.write("<p>분발하세요</p>");
+        break;
+      default : 
+        document.write("<p>잘못된 점수입니다</p>");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수 실습3</title>
+</head>
+<body>
+  <!-- 결과값 출력 -->
+  <h1>점수결과 입니다.</h1>
+  <p id="result">true/false</p>
+
+
+  <!-- 자바스크립트 -->
+  <script>
+    // 1. prompt로 점수값을 입력받기
+    let score = prompt("점수를 입력해주세요.", "0");
+
+    // 2. 점수값을 60점과 비교해서 결과 저장
+    let result = score >= 60
+
+    // 3. 결과를 id="result"인 p태그에 출력
+    document.getElementById("result").innerHTML
+      = result;
+
+  </script>
+</body>
+</html>

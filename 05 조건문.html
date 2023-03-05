@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문</title>
+</head>
+<body>
+  <!-- 자바스크립트 -->
+  <script>
+
+    
+    document.write("<h1>if 조건문</h1>");
+    /* 조건문 : 조건에 따라서 문장이 달라진다. */
+    // 순서도를 통해서 조건문 그림을 확인할 수 있다.
+
+    // 참(true)만 있는 if 조건문
+    if (true) {
+      console.log("이 조건문은 참입니다");
+      document.write("<h1>이 조건문은 참입니다</h1>");
+    };
+    document.write("<p>if문에 상관없이 실행되는 내용입니다</p>");
+
+    // 조건문에서는 조건식이 중요하다
+    // 조건식 : 계산 결과가 boolean 값으로 출력
+    let num = "문자"; // 변수에 값을 저장해서 확인
+    if (isNaN(num)) {
+      document.write(
+        "<p>"
+          +"값이 NaN입니다"
+          +"</p>"
+      )
+    }
+
+    // 점수가 60점 이상이면 합격이다
+    // 1. 문제 안에 조건문을 사용하는지 확인 ('~이면')
+    // 2. 조건식 확인 (비교할 수 있는 내용이 있는지, 참/거짓을 확인할 수 있는 내용이 있는지)
+    // 3. 참일 때 실행할 문장 확인
+    // 문제 안에서 변할 수 있는 값인 변수 찾기 (임의로 입력할 수 있는 값)
+    let 점수 = 70; 
+    if ( 점수 >= 60 ) {
+      document.write(
+        "<p>"
+          +"합격입니다"
+          +"</p>"
+      )
+    }
+    
+
+
+
+
+    document.write("<hr>");
+    document.write("<h1>if-else 조건문</h1>");
+    /* if-else 조건문 : 참일 때의 내용과 거짓일 때의 내용을 다르게 작성할 때 사용 */
+    let isSwitch = false; // 스위치가 켜진 상태
+    if (isSwitch) {
+      // 조건식이 참일 때 실행
+      document.write(
+        "<p>"
+          +"전등이 켜졌습니다"
+          +"</p>"
+      )
+    } else {
+      // 조건식이 거짓일 때 실행
+      document.write (
+        "<p>"
+          +"전등이 꺼졌습니다"
+          +"</p>"
+      )
+    }
+
+    // 문자열로 조건식 작성 (==)
+    // word = "의자"; , 같다/같지 않다 출력
+    // 조건식이 != 연산자로 들어갔을 때
+    // 연산자를 기준으로 if와 else 작성
+    let word = "사과";
+    if (word != "의자") {
+      document.write (
+        "<p>"
+          +"!= 기호를 맞게 사용했다"
+          +"</p>"
+      )
+    } else {
+      document.write (
+        "<p>"
+          +"!= 기호를 맞지 않게 사용했다"
+          +"</p>"
+      )
+    }
+
+
+
+
+
+    document.write("<hr>")
+    document.write("<h1>중첩조건문</h1>")
+    /* 중첩 조건문 : 조건이 여러개 있을 때 if문 안에 if문 사용 */
+    // 첫번째 조건 : 지하철이 파업했다
+    // 두번째 조건 : 버스가 파업했다
+    let subwayWalkout = true; // true : 지하철 파업
+    let busWalkout = true; // true : 버스 파업
+    if (subwayWalkout) {
+      // 지하철 파업이 true
+      if (busWalkout) {
+        // 버스 파업이 true
+        document.write(
+          "<p>"
+            +"택시를 탄다"
+            +"</p>"
+        )
+      } else {
+        // 버스 파업이 false
+        document.write (
+          "<p>"
+            +"버스를 탄다"
+            +"</p>"
+        )
+      }
+    } else {
+      // 지하철 파업이 false
+      document.write(
+        "p"
+        +"지하철을 탄다"
+        +"</p>"
+      )
+    }
+
+
+
+
+
+    document.write("<hr>")
+    document.write("<h1>중첩조건문</h1>")
+    /* if - else if 조건문 */
+    // 첫 번째 조건 : 지하철 파업 > 두 번째 조건 : 버스 파업 >> 택시를 탄다
+    // if - else if : 참인 조건을 먼저 실행
+    // >> 지하철이 파업하지 않았다면(참) 지하철을 탈 것
+    // >> 지하철이 파업했다면 버스는 파업 안 했는지 확인, 버스 파업 안 했다면(참) 버스를 탈 것
+    // >> 버스도 파업했다면 택시 탈 것
+    if (subwayWalkout == false) {
+      document.write (
+        "<p>"
+          +"지하철을 탄다"
+          +"</p>"
+      )
+    } else if (!busWalkout) {
+      // busWalkout 앞에 !를 붙여 값을 부정하면 busWalkout == false 식과 동일한 결과값을 갖는다
+      document.write (
+        "<p>"
+          +"버스를 탄다"
+          +"</p>"
+      )
+    } else {
+      document.write (
+        "<p>"
+          +"택시를 탄다"
+          +"</p>"
+      )
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건문 실습</title>
+</head>
+<body>
+  <!-- 자바스크립트 -->
+  <script>
+    // 1. let check = true; 이요해서 조건식 사용
+    // 2. 참이면, document.write를 사용해서 값 출력
+    let check = true;
+    if (check) {
+      document.write(
+        "<p>"
+          +"확인하였습니다"
+          +"</p>"
+      );
+    };
+
+
+    // 1. 조건식 : 맞는(같다) 단어 입력
+    // >> let word = "의자"; word == ??
+    let word = "의자";
+    if (word == "의자") {
+      document.write(
+        "<p>"
+        +"맞습니다"
+        +"</p>"
+      );
+    }
+
+
+    /* if-else 실습1 */
+    // 1. 변수값 money (임의의 값 넣어서 확인)
+    let money = 2000;
+    // 2. 조건식 : money>=1500
+    if (money > 1500) {
+      // 3. 참일 때 출력 : 버스를 타고 갑니다
+      document.write (
+        "<p>"
+          +"버스를 타고 갑니다"
+          +"</p>"
+          );
+    } else {
+      // 4. 거짓일 때 출력 : 걸어갑니다
+      document.write (
+        "<p>"
+          +"걸어갑니다"
+          +"</p>"
+      );
+    }
+
+
+    /* if-else 실습2 */
+    // 1. 변수 : isCard (임의의 값으로 할당)
+    let isCard = true;
+    // 2. 조건식 : isCard
+    if (isCard) {
+      // 3. 참일 때 : 버스를 타고 갑니다
+      document.write (
+        "<p>"
+          +"버스를 타고 갑니다"
+          +"</p>"
+      );
+      } else {
+      // 4. 거짓일 때 : 걸어갑니다
+      document.write (
+        "<p>"
+          +"걸어갑니다"
+          +"</p>"
+      );
+    }
+
+
+    /* if - else if - else 조건문 실습1 */
+    // 조건식이 많을 때, else if를 통해 조건을 추가할 수 있다
+    // 1. 변수 : dust
+    // 2. 첫번째 조건식 : dust 값이 30 이하 (true : 좋음)
+    // 3. 두번째 조건식 : dust 값이 80 이하 (true : 보통)
+    // 4. 세번째 조건식 : dust 값이 150 이하 (true : 나쁨)
+    let dust = 13;
+    if (dust <= 30) {
+      document.write (
+        "<p>"
+          +"좋음"
+          +"</p>"
+      );
+    } else if (dust <= 80) {
+      document.write (
+        "<p>"
+          +"보통"
+          +"</p>"
+      );
+    } else if (dust <= 150) {
+      document.write (
+        "<p>"
+          +"나쁨"
+          +"</p>"
+      );
+    } else {
+      document.write (
+        "<p>"
+          +"매우나쁨"
+          +"</p>"
+      );
+    }
+
+
+    /* if - else if - else 조건문 실습2 */
+    // 1. 변수 : mathscore
+    // 2. 조건식/참 :
+    //  90점 이상/A
+    //  80점 이상/B
+    //  70점 이상/C
+    //  이하의 점수(else)/F
+    let mathscore = 90;
+    if (mathscore >= 90) {
+      document.write (
+        "<p>"
+        +"A"
+        +"</p>"
+      );
+    } else if (mathscore >= 80) {
+      document.write (
+        "<p>"
+          +"B"
+          +"</p>"
+      );
+    } else if (mathscore >= 70) {
+      document.write (
+        "<p>"
+          +"C"
+          +"</p>"
+      );
+    } else {
+      document.write (
+        "<p>"
+          +"F"
+          +"</p>"
+      );
+    }
+    // if문으로 작성하기
+    // 각각의 if문이 별개이기 때문에 mathscore>=90 이런 식으로 작성하면 값이 3개가 나온다
+    // 이럴땐 논리연산자 &&를 통해 범위를 지정해줘야 값이 한 개만 나온다
+    if (mathscore>=90) {
+      document.write (
+        "<p>"
+        +"A"
+        +"</p>"
+      );
+    }
+    // 두 값의 범위가 모두 참일 때 출력하는 연산자 &&
+    if (mathscore>=80 && mathscore<90) {
+      document.write (
+        "<p>"
+        +"A"
+        +"</p>"
+      );
+    }
+    if (mathscore>=70 && mathscore<80) {
+      document.write (
+        "<p>"
+        +"A"
+        +"</p>"
+      );
+    }
+    if (mathscore<70) {
+      document.write (
+        "<p>"
+        +"A"
+        +"</p>"
+      );
+    }
+
+
+    /* 조건문 연습1. 홀수, 짝수 판별 */
+    // 1. 변수 : evenNum
+    // 2. 조건식 : evenNum % 2 == 0
+    // 3. 참 : 짝수 / 거짓 : 홀수
+    let evenNum = 3;
+    if (evenNum % 2 == 0) {
+      document.write (
+        "<p>"
+          +"짝수"
+          +"</p>"
+      );
+    } else {
+      document.write (
+        "<p>"
+        +"홀수"
+        +"</p>"
+      );
+    }
+
+
+    /* 조건문 연습2. 음수, 양수, 0 판별 */
+    // 1. 변수 : num
+    // 2. 조건 / 참일 때 출력할 내용 :
+    //  num < 0 / 음수
+    //  num > 0 / 양수
+    //  num == 0 (else) / 0
+    let num = 6;
+    if (num<0) {
+      document.write (
+        "<p>"
+          +"음수"
+          +"</p>"
+      );
+    } else if (num>0) {
+      document.write (
+        "<p>"
+          +"양수"
+          +"</p>"
+      );
+    } else {
+      document.write (
+        "<p>"
+          +"0"
+          +"</p>"
+      );
+    }
+
+
+    /* 조건문 연습3. 구매한 가격을 입력하면 할인율이 적용된 금액 출력 */
+    // 1. 변수 : price, 할인율
+    // 2. 조건식 / 참일 때 실행할 내용 :
+    //  price>=10000 / 5% 할인 : price - 0.05*price
+    //  price>=50000 / 10% 할인 : price - 0.1*price
+    //  price>=100000 / 20% 할인 : price - 0.2*price
+    let price =70000
+    if (price>=100000) {
+      document.write (
+        "<p>"
+          +`할인 적용 금액 : ${price - 0.2*price}`
+          +"</p>"
+      );
+    } else if (price>=50000) {
+      document.write (
+        "<p>"
+          +`할인 적용 금액 : ${price - 0.1*price}`
+          +"</p>"
+      );
+    } else if (price>=10000) {
+      document.write (
+        "<p>"
+          +`할인 적용 금액 : ${price - 0.05*price}`
+          +"</p>"
+      );
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>변수 실습1</title>
+</head>
+<body>
+
+  <!-- 값을 출력할 html 태그 필요 -->
+  <h1 id="greeting">님 오신 것을 환영합니다.</h1>
+  <p>홈페이지에 방문하신 것을 환영합니다.</p>
+
+
+
+  <!-- 자바스크립트 공간 -->
+  <script>
+
+    // 1. prompt를 통해서 값을 입력받는다.
+    // 입력받을 때는 반드시 값을 변수를 통해 저장한다.
+    let nickname = prompt("닉네임을 입력해주세요.");
+
+    // 2. 입력받은 값을 h1태그의 id를 찾아서 출력한다.
+    // 태그를 찾아줄 때는 getElementById를 통해 찾는다.
+     document.getElementById("greeting").innerHTML
+      =`${nickname}님 오신 것을 환영합니다`;
+    
+    // 태그를 찾기 위해 querySelectior도 사용 가능
+    // querySelector는 css의 선택자를 통해서 찾을 수 있다.
+    // id="greeting"의 형제인 p 태그 찾기
+    document.querySelector("#greeting+p").innerHTML
+      ="querySelector를 이용"
+  </script>
+</body>
+</html>
