@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>do while 반복문 실습</title>
+  </head>
+  <body>
+    <script>
+      /* do while을 이용해서 비밀번호 입력, 시도 횟수 카운트 */
+      // 반복내용 : 비밀번호 입력(prompt), count++;
+      // 반복조건 : 비밀번호가 틀렸을 때
+      let count = 0;
+      let pw = "";
+      do {
+        pw = prompt("비밀번호를 입력해주세요");
+        count++;
+      } while (pw != "green");
+      document.write(`<p>${count}회 입력하였습니다</p>`);
+    </script>
+  </body>
+</html>

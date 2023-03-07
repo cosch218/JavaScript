@@ -85,6 +85,96 @@
           document.write("<p>불합격</p>");
         }
       }
+      document.write("<hr>");
+
+      /* 반복문과 조건문 실습 */
+      // 1. 1~100까지 짝수만 출력하세요
+      // 반복문 : 1~100까지 반복 (초기값: 1, 조건식 i<=100, 증가값: i++)
+      // 조건문 : 변수 i, 조건식: 짝수(i%2==0)
+      for (i = 1; i <= 100; i++) {
+        if (i % 2 == 0) {
+          document.write(`<span>${i} </span>`);
+        }
+      }
+      document.write("<hr>");
+      // if문을 쓰지 않고 증감식의 값을 바꿔서 출력
+      for (i = 2; i <= 100; i += 2) {
+        document.write(`<span>${i} </span>`);
+      }
+      document.write("<hr>");
+
+      // 2. 1~50까지 7의 배수만 출력하세요
+      // 반복문 : 1~50까지 반복 (초기값: 1, 조건식 i<=50, 증가값 i++)
+      // 조건문 : 변수 i, 조건식: 7의 배수 (i%7==0)
+      for (i = 1; i <= 50; i++) {
+        if (i % 7 == 0) {
+          document.write(`<span>${i} </span>`);
+        }
+      }
+      document.write("<hr>");
+
+      /* 중첩반복문 실습 - 구구단 */
+      // 바깥 반복문 (2~9)
+      // 안쪽 반복문 (1~9)
+      for (let dan = 2; dan < 10; dan++) {
+        for (let j = 1; j < 10; j++) {
+          document.write(`${dan} X ${j} = ${dan * j} </span>`);
+        }
+        document.write("<br>");
+      }
+      document.write("<hr>");
+
+      /* For문 연습 */
+      // 1. 점수 배열 [60,70,80,90,40,70,70]을 만들어서 평균값을 구하세요
+      let jsScores = [60, 70, 80, 90, 40, 70, 70];
+      let jsSum = 0;
+      for (let i = 0; i < jsScores.length; i++) {
+        //document.write(jsScores[i]);
+        // 반복하는 횟수의 값을 반복문의 i로 설정한 다음 아래와 같은 식을 세우면 된다
+        // jsSum = jsSum + jsScores[i] 또는 아래의 식 사용
+        jsSum += jsScores[i];
+      }
+      // 모두 더한 합을 얻고 싶다면 for문이 끝난 다음에 작성
+      document.write(jsSum);
+      document.write(`<p>${jsSum / jsScores.length}</p>`);
+      document.write("<hr>");
+
+      // 2. 1~100까지의 수 중 홀수만 모두 더한 값 출력
+      let oddSum = 0;
+      for (let i = 1; i <= 100; i++) {
+        if (i % 2 == 1) {
+          oddSum += i;
+          //console.log(i);
+        }
+      }
+      document.write(`<p>${oddSum}</p>`);
+      document.write("<hr>");
+
+      // 3. 1~100까지 3의 배수와 5의 배수의 합을 출력
+      // 조건이 두개일 때 논리 연산자 사용 : || 또는 &&
+      // 반복 : 1~100
+      // 조건 : i%3==0, i%5==0 / 참일 때 숫자들을 합함
+      let sum2 = 0;
+      for (let i = 1; i <= 100; i++) {
+        if (i % 3 == 0 || i % 5 == 0) {
+          sum2 += i;
+          //console.log(i);
+        }
+      }
+      document.write(`<p>${sum2}</p>`);
+      document.write("<hr>");
+      //if문에 조건식을 논리 연산자 사용하지 않고 따로 쓸 경우
+      let sum3 = 0;
+      for (let i = 1; i <= 100; i++) {
+        if (i % 3 == 0) {
+          //console.log(i);
+          sum3 += i;
+        } else if (i % 5 == 0) {
+          //console.log(i);
+          sum3 += i;
+        }
+      }
+      document.write(`<p>${sum3}</p>`);
     </script>
   </body>
 </html>

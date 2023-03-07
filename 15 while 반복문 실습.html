@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>while 반복문 실습</title>
+  </head>
+  <body>
+    <script>
+      /* while문 실습 */
+      // 1. 프롬포트 창에 10+10? 이라는 질문을 하고 맞출 때까지 반복하는 while문 작성
+      // 반복 : prompt() 값 입력받음
+      // 반복조건 : answer!= "20"
+      let answer = "20"; //값을 넣어놓으면 prompt창이 안 뜬다. 값을 공백("")으로 비워놔야 함
+      while (answer != 20) {
+        //answer을 받아와서 값을 비교
+        answer = prompt("10+10=?");
+      }
+      document.write("<p>정답입니다</p>");
+      document.write("<hr>");
+
+      // 2. 0이 입력될 때까지 입력받은 숫자의 값을 다 더하는 while문 작성. while문이 끝난 후에 결과를 출력 (while)
+      // 단, 숫자가 아닌 값이 입력되면 isNaN을 통해서 더하지 않는다. (if)
+      // => 숫자가 아닌 경우에는 더하지 않는다 => 숫자라면 더한다 => !isNaN(숫자) == !false
+      // 반복 : prompt() 값 입력받음
+      // 반복조건 : num != 0
+      // if조건문 : 변수 number, 조건식 (isNaN(number)==false 또는 !isNaN(number)==!false)
+      let number = "0"; //값을 넣어놓으면 prompt창이 안 뜬다. while문을 실행하려면 값을 공백("")으로 비워놔야 함
+      let sum = 0;
+      while (number != "0") {
+        // 조건에 따라 계속해서 값을 입력받고 더하는 것을 반복
+        if (isNaN(number) == false) {
+          sum += Number(number);
+        }
+        number = prompt("숫자를 넣으면 다 더해집니다.(종료:0)");
+      }
+      document.write(`총합:${sum}`);
+    </script>
+  </body>
+</html>
