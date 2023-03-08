@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>명시적 함수 실습</title>
+    <script>
+      /* 함수 작성 공간 */
+      // 매개변수를 가지고 리턴값은 없는 함수
+      function introName(name) {
+        // 내용 실행
+        document.write(`<p>안녕하세요. ${name}입니다. 반갑습니다.</p>`);
+        print(`안녕하세요. ${name}입니다. 반갑습니다.`);
+      }
+
+      // 값을 입력했을 때 document.wite(`<p></p>`);까지 같이 출력되는 함수
+      function print(string) {
+        document.write(`<p>${string}</p>`);
+      }
+
+      // 매개변수와 리턴값을 가지고 실행내용은 없는 함수
+      function introNameReturn(name) {
+        // return `<p>안녕하세요. ${name}입니다. 반갑습니다.</p>`;
+        return "<p>안녕하세요. " + name + "입니다. 반갑습니다.</p>";
+      }
+
+      // 매개변수와 리턴값, 실행내용 모두 가지고 있는 함수
+      // 7. 함수 작성
+      function area(num1, num2) {
+        let result = num1 * num2;
+        return result;
+      }
+
+      // 배열 안에 있는 값 평균 구하기
+      // 3. 배열을 매개변수로 받아와서 실행하는 함수 작성
+      function avrg(numArray) {
+        let avrgResult = 0;
+        let sumArray = 0;
+        for (let num of numArray) {
+          sumArray += num;
+        }
+        avrgResult = sumArray / numArray.length;
+        return avrgResult;
+      }
+
+      // 두 수를 더하는 함수
+      // 값으로 undefined가 들어왔을 때 if문을 이용해서 미리 지정된 값(0) 넣기
+      // 23 함수 내용 확인용.html 파일 확인
+      function add(num1, num2) {
+        if (num2 == undefined) {
+          num2 = 0;
+        }
+        return num1 + num2;
+      }
+
+      // 두 수를 곱하는 함수
+      function multiply(a, b = 1) {
+        return a * b;
+      }
+
+      // 나머지 매개변수를 사용하여 값을 가져오는 함수
+      // 가져온 값은 배열의 형태
+      function addAll(...number) {
+        let sum = 0;
+        for (let i = 0; i < number.length; i++) {
+          sum += number[i];
+        }
+        return sum;
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      introName("홍길동");
+      introName("성춘향");
+      document.write("<hr>");
+
+      // 가장 안쪽()에 있는 내용부터 실행된다
+      document.write(introNameReturn("장발장"));
+      document.write("<hr>");
+
+      // 매개변수와 리턴값, 실행내용 모두 가지고 있는 함수
+      // 1. 함수를 만들기 전에 script에서 확인 후 함수에 넣기
+      let num1 = 4;
+      let num2 = 3;
+      let returnResult; // 2. 리턴값 확인
+      let result; // 3. 사각형 넓이의 값
+      // 4. 실행 내용
+      result = num1 * num2;
+      // 5. 리턴결과 확인
+      returnResult = result; // 리턴해서 돌려줄 값
+      print(returnResult); // 6. 리턴 값이 나온것을 확인했다면 함수에 넣어준다
+      ///////////////////////////////
+      print(area(4, 3)); //8.  위의 내용을 바탕으로 작성한 함수 호출
+      print(area(5, 10));
+      document.write("<hr>");
+
+      // 배열 안에 있는 값 평균 구하기
+      let numArray = [30, 60, 40, 60, 20];
+      let sumArray = 0;
+      let avrgResult; // 평균값을 담을 변수
+      // 실행할 내용
+      // 1. 배열의 값을 모두 더하기 : for 반복문 사용 (of 또는 length)
+      for (let num of numArray) {
+        sumArray += num;
+      }
+      print(sumArray);
+      // 2. 평균값 구하기
+      avrgResult = sumArray / numArray.length;
+      print(avrgResult);
+      //////////////////////////
+      print(avrg(numArray)); // 4. 위의 내용을 바탕으로 작성한 함수 호출
+      document.write("<hr>");
+
+      let array2 = [1, 2, 3, 4, 5];
+      print(avrg(array2));
+      document.write("<hr>");
+
+      //초과된 인수와 부족한 인수
+      introName(); // 값이 부족할 땐 값이 undifined로 출력
+      introName("홍길동", "장발장"); // 초과된 값은 사용하지 않는다
+      document.write("<hr>");
+
+      // 두 수를 더하는 함수
+      // 값으로 undefined가 들어왔을 때 if문을 이용해서 미리 지정된 값(0) 넣기
+      print(add(5));
+      print(add(5, 5));
+      document.write("<hr>");
+
+      // 두 수를 곱하는 함수
+      // 매개변수중 하나를 기본값으로 초기화해서 값을 하나만 입력해도 계산된다
+      print(multiply(3));
+      print(multiply(5, 3));
+      document.write("<hr>");
+
+      // 나머지 매개변수를 사용하는 함수
+      // 안에 인수가 몇 개가 들어갈지 모를 때 배열로 받아온다
+      document.write("<p>", "안녕", "두번째 내용입니다", "</p>");
+      document.write("<hr>");
+
+      print(addAll(1, 2, 3, 4, 5));
+      print(addAll(5)); //[5]
+    </script>
+  </body>
+</html>

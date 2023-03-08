@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>함수표현식</title>
+  </head>
+  <body>
+    <script>
+      /* 익명(무명)함수 : 함수의 이름이 없는 함수 */
+      /* 함수 표현식 : 익명함수를 변수에 담아서 사용하는 함수 */
+      // 안녕하세요를 출력하는 함수
+      let hi = function () {
+        document.write(`<p>안녕하세요</p>`);
+      };
+      hi();
+      document.write("<hr>");
+
+      // print() 함수 : document.write(`<p></p>`);
+      // 선언문 함수에서 이름을 변수로 만들어 사용
+      let print = function (string) {
+        document.write(`<p>${string}</p>`);
+      };
+      // 함수 표현식을 이용하여 작성한 경우는 변수로 값이 할당된 이후 사용할 수 있다
+      print("안녕");
+      document.write("<hr>");
+
+      // 함수 선언문은 모든곳에서 사용가능
+      // 함수 표현식은 let의 특성에 따라 특정 블록 안에서만 사용할 수 있다
+      for (let i = 0; i < 3; i++) {
+        // 함수 표현식으로 만든 함수
+        let hello = function () {
+          document.write("<p>안녕</p>");
+        };
+        hello();
+      }
+      // print(i); // i는 for문에서만 사용
+      // hello(); // hello는 for문 안에서 사용 => 함수 바깥으로 나와서 호출할 수 없다
+      document.write("<hr>");
+
+      /* 함수 표현식 실습 */
+      let sub = function (num1, num2) {
+        return num1 - num2;
+      };
+      document.write(`<p>${sub(5, 10)}</p>`);
+      document.write("<hr>");
+
+      // 숫자를 넣었을 때 홀수인지 짝수인지 알려주는 함수표현식 작성 : oddEvenCheck
+      // oddEvenCheck에 숫자를 넣으면 return 값으로 "홀수" 또는 "짝수" 출력
+      // 조건문 : num%2 ==0
+      let num = 4;
+      let oddEvenCheck = function (num) {
+        if (num % 2 == 0) {
+          // return은 값을 반환하는 특성도 있지만 함수를 빠져나오는 특성도 있다
+          return "짝수";
+        } else {
+          return "홀수";
+        }
+      };
+      document.write(`<p>${oddEvenCheck(3)}</p>`);
+
+      //삼항연산자를 사용한 홀수 짝수
+      let oddEvenCheckOper = function (num) {
+        return num % 2 == 0 ? "짝수" : "홀수";
+      };
+      document.write(`<p>${oddEvenCheckOper(2)}</p>`);
+      document.write("<hr>");
+    </script>
+  </body>
+</html>
