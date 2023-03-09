@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      /* 함수 선언식은 코드 실행흐름에 영향이 없기 때문에 head 안의 script로 따로 빼서 작성한다 */
+      // document.write(`${}`); 함수
+      // 바꾸고자하는 내용 = 변수(매개변수)
+      // 매개변수의 값은 선언할 때 정해지지 않고 호출할 때 정해진다
+      function print(string) {
+        document.write(`<p>${string}</p>`);
+      }
+
+      /* 미세먼지 판별하는 조건문을 함수로 만들기 */
+      function dustCheck(dust) {
+        if (dust <= 30) {
+          return "좋음";
+        } else if (dust <= 80) {
+          return "보통";
+        } else if (dust <= 150) {
+          return "나쁨";
+        } else {
+          return "매우나쁨";
+        }
+      }
+
+      /* 구구단의 단을 입력했을 때 그 단의 내용을 출력하는 함수 작성 */
+      function gugudan(dan) {
+        for (i = 1; i < 10; i++) {
+          document.write(`<p>${dan}x${i}=${dan * i}</p>`);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+      /* 함수를 만들기 전에 확인하는 방법 */
+      // 매개변수와 실행할 내용이 필요함
+      // 매개변수 : 변수를 하나 만들어주고 임의의 값을 넣어준다
+      // 실행할 내용 : 그 변수에 값을 넣어 확인
+      let string = "안녕하세요";
+      document.write(`<p>${string}</p>`);
+      // 위의 내용으로 작성한 함수 호출
+      print("반갑습니다");
+      // 호출한 공간에서 return값 가져옴
+      // 이 때 return값을 변수에 담아두지 않으면 값은 사라진다
+      print("<hr>");
+
+      /* 미세먼지 판별하는 조건문을 함수로 만들기 */
+      // 1. 변수 : dust
+      // 2. 조건식과 참일 때 return 할 내용
+      //  dust<=30 "좋음"
+      //  dust<=80 "보통"
+      //  dust<=150 "나쁨"
+      //  그 외 (else) "매우나쁨"
+      let dust = 40; // => 매개변수
+      if (dust <= 30) {
+        print("좋음");
+      } else if (dust <= 80) {
+        print("보통");
+      } else if (dust <= 150) {
+        print("나쁨");
+      } else {
+        print("매우나쁨");
+      }
+      // head 안의 함수로 작성한 함수 호출
+      // 함수 안에서 print 또는 document.write로 호출하지 않고,
+      // return으로 자료형을 주는 것은 인수 값을 받아와서 수정 또는 계산하기 위함
+      print("오늘의 미세먼지 수준은 " + dustCheck(90) + "입니다");
+      print("<hr>");
+
+      /* 구구단의 단을 입력했을 때 그 단의 내용을 출력하는 함수 작성 */
+      // 함수에서도 결과 바로 출력 (return 사용 X)
+      // 반복 : 구구단의 num (1~9)
+      let dan = 2;
+      for (i = 1; i <= 9; i++) {
+        document.write(`<p>${dan}x${i}=${dan * i}</p>`);
+      }
+      // head 안의 함수로 작성한 함수 호출
+      // print(), document.write()에 넣어서 출력하지 않은 이유
+      // : gugudan이라는 함수에서 return을 사용하지 않았기 때문
+      print("<hr>");
+      gugudan(5);
+      print("<hr>");
+      // 괄호를 통해서 함수를 호출하여 함수 안의 내용 실행하고 return값 전달
+      gugudan(15);
+      // 괄호를 붙여주지 않으면 그 안의 함수 내용을 전달
+      document.write(gugudan);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>내장함수</title>
+  </head>
+  <body>
+    <script>
+      /* 내장함수 : 미리 제공해주고 있는 함수 */
+      // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects
+      // parseInt() 문자열에서 숫자를 찾아서 숫자로 반환, 숫자가 없다면 NaN을 반환
+      document.write(`<p>${parseInt("10살") + 10}</p>`);
+
+      // parseFloat() 문자열에서 실수를 찾아 실수로 반환
+      document.write(`<p>${parseFloat("17.5도") + 0.3}</p>`);
+
+      // isFinite() 숫자값이나 계산식을 넣었을 때 그 값이 유리수이면 true를 반환
+      // return값이 boolean인 함수는 if문의 조건식으로도 많이 사용한다
+      document.write(`<p>${isFinite(10 / 3)}</p>`);
+
+      /* 타이머함수 : 타이머함수 안에 넣어준 함수를 시간에 따라 실행 */
+      let timerId = setTimeout(function () {
+        document.write("<p>1초가 지났습니다</p>");
+      }, 1000);
+      // 타이머함수 뒤에 작성된 내용은 바로 실행
+      document.write("<p>setTimeout 다음에 작성된 내용입니다</p>");
+      // 1초가 지났습니다 라고 출력하는 타이머함수 중지
+      clearTimeout(timerId);
+
+      /* 내장함수 실습 */
+      // parseInt()를 사용하여 나이를 입력하면, 출생연도를 알려주는 코드 작성
+      // 반복문을 사용하여 입력한 나이의 값이 NaN이 나오면 경고창이 뜨고 다시 입력할 수 있게 만들기
+      // 만약 if를 사용한다면 나이 반복 입력은 불가능. while 을 if로 바꾸고 안에 다시 입력하는 prompt 함수 지우고 while 밖의 실행내용을 else에 담으면 된다
+      let age = parseInt(prompt("나이를 입력해주세요"));
+      while (isNaN(age)) {
+        alert("나이를 제대로 입력해주세요");
+        age = parseInt(prompt("나이를 입력해주세요"));
+      }
+      let birthYear = 2023 - age + 1;
+      document.write(`<p>당신은 ${birthYear}년에 태어났습니다.</p>`);
+    </script>
+  </body>
+</html>
