@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>객체 확인</title>
+  </head>
+  <body>
+    <script>
+      /* 객체 : 속성값(변수)과 메소드(함수)를 가지고 있는 자료형(변수에 저장해서 사용) */
+      // document의 자료형 : 객체(object)
+      document.write(typeof document);
+      document.write("<hr>");
+
+      // 객체 생성 후 변수에 할당 (객체가 자료형이기 때문에)
+      // let puppy : 번수
+      // {} : 객체
+      // => let puppy 변수에 {}객체 할당
+      let puppy = {
+        // 속성
+        name: "초코",
+        // 메소드
+        eat: function () {
+          document.write(`<p>밥을 먹습니다</p>`);
+        },
+      };
+      document.write(`<p>${puppy}</p>`); // 출력값 : [object Object]
+      document.write(`<p>${puppy.name}</p>`); // 출력값 : 초코
+      document.write(`<p>${puppy["name"]}</p>`); // 출력값 : 초코
+      document.write(`<p>${puppy.eat()}</p>`); // 출력값 : 밥을 먹습니다 undefined (undefined가 나온 이유 : eat 함수가 끝나고 return값으로 undefined 출력)
+      puppy.eat(); // 출력값 : 밥을 먹습니다
+      document.write("<hr>");
+
+      /* 리터럴 표기를 이용한 객체 생성 실습 1 */
+      let person = {
+        // 속성
+        name: "홍길동",
+        address: "부산",
+        // 메소드
+        intro: function () {
+          // this는 자기 자신의 객체를 가져온다
+          return `${this.name}입니다. ${this.address}에 거주중입니다.`;
+        },
+      };
+      document.write(`<p>${person.intro()}</p>`); // return값이 들어가있기 때문에 undefined가 아닌 return값이 출력된다
+      document.write("<hr>");
+
+      /* 리터럴 표기를 이용한 객체 생성 실습 2 */
+      let myCookie = {
+        shape: "별",
+        flavor: "딸기",
+        intro: function () {
+          return `${this.shape} 모양의 ${this.flavor} 맛입니다.`;
+        },
+        count: function (number) {
+          return `${number}개 있습니다.`;
+        },
+      };
+      document.write(`<p>${myCookie.intro()}</p>`);
+      document.write(`<p>${myCookie.count(5)}</p>`);
+      document.write("<hr>");
+
+      /* 생성자 함수 : 값을 받아와서 객체를 만드는 함수 */
+      // 생성자 함수는 구분을 위해 첫글자를 대문자로 작성 (ex: Dog)
+      function Dog(color, name, age) {
+        // 속성
+        this.color = color;
+        this.name = name;
+        this.age = 0; // 원하는 값을 직접 할당할 수 있다
+        // 메소드
+        this.eat = function () {
+          return `${this.name}는 밥을 먹습니다`;
+        };
+      }
+      // 객체 생성
+      let dog1 = new Dog("흰색", "백구", 1);
+      // 속성 값 수정
+      dog1.age = 2;
+      console.log(dog1); // 출력값 : Dog {color: '흰색', name: '백구', age: 2, eat: ƒ}
+      // 속성 추가
+      dog1.family = "진돗개";
+      console.log(dog1); // 출력값 : Dog {color: '흰색', name: '백구', age: 2, family: '진돗개', eat: ƒ}
+      console.log(dog1.eat()); // 출력값 : 백구는 밥을 먹습니다
+
+      /* 생서자 함수를 이용한 객체의 생성 실습 1 */
+      function Student(name, score) {
+        // 속성
+        this.name = name;
+        this.score = score;
+        // 메소드
+        this.study = function () {
+          // score값을 10씩 증가 +10#
+          this.score += 10;
+        };
+        this.showScore = function () {
+          return this.score;
+        };
+      }
+      let myStudent = new Student("홍길동", 70);
+      let yourStudent = new Student("성춘향", 80);
+      console.log(myStudent);
+      console.log(yourStudent);
+
+      /* 생서자 함수를 이용한 객체의 생성 실습 2 */
+      function BusCard(money) {
+        // 객체 속성
+        this.money = money;
+        // 객체 메소드
+        // 1) charge : money에 입력받은 금액을 더하는 메소드
+        // 객체 안에서 접근하는 값 : this.money
+        // 메소드의 매개변수 : cash
+        this.charge = function (cash) {
+          this.money += cash;
+          return `충전완료. 잔액 : ${this.money}`;
+        };
+        // 2) 버스를 탈 때 1500원 지불, 잔액이 없다면 잔액 부족 알림
+        // 조건 : 객채의 money가 1500보다 크거나 같다
+        // 조건이 참이면 money -= 1500, 거짓이면 console로 잔액부족 알림
+        this.takeBus = function () {
+          if (this.money >= 1500) {
+            this.money -= 1500;
+            return `결제완료. 잔액 : ${this.money}`;
+          } else {
+            return `잔액부족. 잔액 : ${this.money}`;
+          }
+        };
+        // 3) 객체의 money 값을 return하는 메소드
+        this.showMoney = function () {
+          return `잔액 : ${this.money}`;
+        };
+      }
+
+      let myBusCard = new BusCard(800);
+      console.log(myBusCard);
+      console.log(myBusCard.takeBus());
+      console.log(myBusCard.charge(1000));
+      console.log(myBusCard.takeBus());
+      console.log(myBusCard.showMoney());
+
+      /* 생서자 함수를 이용한 객체의 생성 실습 3 */
+      function Message(name, content, time) {
+        // 객체 속성
+        this.name = name;
+        this.content = content;
+        this.time = time;
+        // 객체 메소드
+        this.modifyMessage = function (message, time) {
+          this.content = message;
+          this.time = time;
+          return `${this.name}님께서 "${this.content}"를 ${this.time}에 보냈습니다`;
+        };
+        this.showMessage = function () {
+          return `${this.name}님께서 "${this.content}"를 ${this.time}에 보냈습니다`;
+        };
+      }
+      let myMessage = new Message("홍길동", "반갑습니다", "02:24");
+      let yourMessage = new Message("성춘향", "안녕하세요", "02:24");
+      console.log(myMessage);
+      console.log(yourMessage);
+      console.log(myMessage.showMessage());
+      console.log(yourMessage.showMessage());
+      console.log(myMessage.modifyMessage("저는 홍길동입니다.", "02:24"));
+      console.log(
+        yourMessage.modifyMessage("저는 성춘향입니다. 반갑습니다", "02:25")
+      );
+
+      // 생성자 함수로 만든 객체는 객체의 매소드에 접근 가능
+      let num = Number(123);
+      let string = String(456);
+
+      // 가장 많이 사용한 document의 메소드
+      document.write("<p>객체에 들어가있는 함수를 메소드라고 한다</p>");
+      document.write("<hr>");
+
+      // 객체는 자료형 중 하나이고 속성과 메소드를 가진다.
+      // this는 자기 자신을 호출하는 키워드이다.
+
+      /* delete 연산자 : 삭제된 속성과 메소드를 호출하면 undefined값이 출력된다 */
+      delete myMessage.content;
+      console.log(myMessage.content);
+      delete myMessage.name;
+      console.log(myMessage.name);
+      console.log(myMessage.showMessage());
+
+      /* for...in 루프 : 객체 안의 속성/메소드 반복 */
+      for (let i in puppy) {
+        document.write("<p>" + i + ":" + puppy[i] + "</p>");
+      }
+      document.write("<hr>");
+
+      /* for...in 루프 실습 */
+      for (let i in yourMessage) {
+        document.write(`<p>${i}</p>`);
+      }
+      document.write("<hr>");
+      for (let i in myBusCard) {
+        document.write(`<p>${myBusCard[i]}</p>`);
+      }
+    </script>
+  </body>
+</html>

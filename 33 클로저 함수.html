@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클로저 함수</title>
+  </head>
+  <body>
+    <script>
+      /* 클로저 함수 : 상위 함수 안에 중첩 함수를 리턴해서 상위 함수의 변수값을 바꾸는 함수 */
+
+      // 클로저 함수를 사용하지 않을 경우 : 함수 안에 지역변수는 호출할 때마다 undefined로 초기화된다
+      function count() {
+        let countNum = 0;
+        return (countNum += 1);
+      }
+      console.log(count());
+      console.log(count());
+
+      // 클로저 함수를 사용할 경우 : 클로저 함수 외부 변수값에 접근할 수 있다
+      function countClosure() {
+        let countNum = 0; // 상위함수 안의 지역변수, 클로저 함수의 외부변수
+        // return을 통해서 중첩 함수 전달
+        // return은 계산식과 함수호출을 실행하지만, 함수와 같은 내용을 적으면 그대로 전달
+        // => 밖에서 countClosure();을 호출하면 function() {return(countNum+=1);} 내용 자체가 출력된다
+        return function () {
+          return (countNum += 1);
+        };
+      }
+      let counter = countClosure();
+      document.write(`<p>${counter()}</p>`);
+      document.write(`<p>${counter()}</p>`);
+    </script>
+  </body>
+</html>
