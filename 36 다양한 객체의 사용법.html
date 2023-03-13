@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>다양한 객체의 사용법</title>
+  </head>
+  <body>
+    <script>
+      /* 다양한 객체의 사용법 */
+
+      // 객체 안에 객체를 넣어서 사용
+      let memo = {
+        title: "오늘 할 일",
+        todo: {
+          morning: ["청소", "준비"],
+          afternoon: ["수업"],
+          evening: ["정리", "독서"],
+        },
+      };
+      document.write(memo.todo.afternoon[0]); // 출력값 : 수업
+
+      // 배열 안에 객체를 넣어서 사용
+      let todoList = [
+        { time: "아침", todo: "청소" },
+        { time: "점심", todo: "수업" },
+        { time: "저녁", todo: "독서" },
+      ];
+
+      // 배열 안에 객체의 속성값을 찾는 법
+      document.write(`<p>${todoList[1].todo}</p>`); // 출력값 : 수업
+      document.write(`<p>${todoList[1].time}</p>`); // 출력값 : 점심
+
+      /* 객체를 속성으로 갖는 객체 실습 */
+      let myMovie = {
+        title: "킹메이커",
+        time: "120",
+        rate: 8.84,
+        comment: {
+          id: "movieMaster",
+          content: "Good",
+        },
+      };
+
+      /* 사용자 객체 실습 - 동물병원 진료차트 */
+      function AnimalChart(name, kind, age) {
+        // 속성
+        this.name = name;
+        this.kind = kind;
+        this.age = age;
+        this.sickness = "";
+        this.condition = "";
+        // 메소드
+        this.receive = function (sickness, condition) {
+          this.sickness = sickness;
+          this.condition = condition;
+          return this.sickness + "/" + this.condition;
+        };
+        // 이름, 동물종류, 나이, 병명, 상태 출력
+        // 반복문을 이용해 전체 출력 : for in 객체
+        // 조건문을 이용해 메소드(함수)를 제외하고 출력 : typeof 자료형을 확인하고 출력
+        this.confirm = function () {
+          let allString = "";
+          // 생성자함수이기 때문에 this를 통해서 생성될 객체(AnimalChart)에 임의로 접근
+          for (let i in this) {
+            if (typeof this[i] != "function") {
+              allString += this[i] + ",";
+            }
+          }
+          return allString;
+        };
+      }
+      let first = new AnimalChart("마루", "강아지", 1);
+      first.receive("감기", "나쁨");
+      first.confirm();
+      document.write(first.confirm());
+      // 생성자 함수를 통해 객체 추가
+      // 진료차트와 같이 동일한 형태의 내용의 객체를 많이 사용할 때는 배열 안에 넣어서 작성할 수도 있다.
+      let animalChartList = [
+        new AnimalChart("마루", "강아지", 1),
+        new AnimalChart("가을", "강아지", 3),
+        new AnimalChart("구름", "고양이", 2),
+      ];
+    </script>
+  </body>
+</html>
