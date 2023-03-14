@@ -36,11 +36,27 @@
       document.write(`<p>${flowerArray.pop()}</p>`);
       document.write("<hr>");
 
+
+
       /* String 객체 실습 */
       let name = "홍길동";
       let centerChar = name.charAt(1);
       let replaceName = name.replace(centerChar, "*");
       document.write(`<p>${replaceName}</p>`);
+
+
+
+      /* Date 객체 실습 */
+      let today = new Date();
+      console.log(today.getHours()+"시");
+      console.log(today.getMinutes()+"분");
+      console.log(today.getSeconds()+"초");
+
+
+
+      /* Math 객체 실습 */
+      let r = 3;
+      document.write(`<p>원의 넓이 : ${Math.floor(r*r*Math.PI)}</p>`);
     </script>
   </body>
 </html>

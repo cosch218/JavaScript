@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOM</title>
+</head>
+<body>
+    <script>
+        /* BOM (브라우저 오브젝트 모델) : 브라우저(인터넷창)에 접근해서 자바스크립트로 제어하기 위한 모델 */
+        // 가장 상위 객체 : window (접두사 생략 가능 ex) window.document.write => document.write )
+        // 현재 script의 상위 객체가 window이므로 this로 접근 가능
+        // document도 window 안에 속한 객체이다
+        let i = 0;
+        // 위의 내용으로 start debugging을 돌려보면 this:window 확인 가능
+
+        // location 객체
+        // 현재 웹페이지에 대한 정보를 가지고 있다
+        // 콘솔 창에 location.reload() 를 입력하면 페이지가 '새로고침'된다
+        document.write(`<p>현재 웹페이지 주소 : ${location.href}</p>`);
+
+        // history 객체
+        // 히스토리 정보 저장
+        // .length 히스토리 개수 확인
+        // .back() / .forward() / .go() 메소드를 이용해서 페이지를 이동할 수 있다
+
+        // 대화 상자 : window 객체에서 제공해주는 메소드
+        // let choice = confirm("선택을 해주세요")
+        // document.write(`<p>${choice}</p>`)
+        // => 확인을 누르면 ture, 취소를 누르면 false가 화면에 출력됨
+        document.write("<hr>")
+
+
+        /* BOM 객체 실습 */
+        let platform = confirm("운영체제를 알려드릴까요?")
+        if (platform == true) {
+            document.write(`<p>${navigator.platform}입니다.</p>`);
+        }
+
+        // 위의 platform이라는 변수가 한 번 실행하고 말 변수라면 if 조건식에 직접 confirm()을 사용해서 코드를 간결하게 작성할 수 있다
+        // 함수와 메소드를 같이 사용할 때 변수에 답지 않고 바로 return값을 함수의 인수값으로 넣어 사용 가능
+        // 함수 안에 실행함수를 호출해서 사용 가능
+        if (confirm("운영체제를 알려드릴까요?")) {
+            document.write(`<p>${navigator.platform}입니다.</p>`);
+        }
+    </script>
+</body>
+</html>
