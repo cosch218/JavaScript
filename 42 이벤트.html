@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+</head>
+<body>
+    <!-- HTML 태그에서 어떤 이벤트가 발생 -->
+
+    <!-- onclick : 태그를 클릭했을 때 실행 -->
+    <h1 onclick="printConsole('h1')">이벤트</h1>
+    <button onclick="alert('문자열을 클릭했어요!')">클릭하세요</button>
+    <p onmouseenter="printConsole('p')">마우스를 올리세요</p>
+    <hr>
+
+    <!-- 실습 1 -->
+    <!-- 요소에 속성으로 등록 -->
+    <p>값을 넣어주세요</p>
+    <input type="text" id="input" value="값" placeholder="값 입력" size="10">
+    <button onclick="printText()">확인</button>
+    <p id="textprint"></p>
+    <hr>
+
+    <script>
+        /* HTML 태그에서 이벤트가 발생했을 때 실행할 내용 작성 */
+        // 함수로 만들어서 onclick 이벤트에 전달
+        function printConsole(tag) {
+            console.log(tag+"을 눌렀습니다");
+        }
+
+        /* 실습 1 */
+        function printText() {
+            let input = document.querySelector("#input");
+            let textPrint = document.querySelector("#textprint");
+            textPrint.innerHTML = input.value;
+            // p 태그의 글자 색 바꾸기
+            // 속성 값에 직접 접근하여 바꿀 때는 = 으로 할당
+            textPrint.style.color = "magenta";
+            // 속성에 있는 값을 가져올 수 있다
+            console.log(textPrint.style.color);
+            // p 태그의 이전 형제태그(button)에 접근해서 style 바꾸기
+            // 버튼 클릭했을 때 버튼의 글자 색이 검정이라면 빨강으로 변경
+            // 버튼 클릭했을 때 버튼의 글자 색이 빨강이라면 검정으로 변경
+            let button = textPrint.previousElementSibling;
+            if (button.style.color == "red") {
+                button.style.color = "";
+            } else {
+                button.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

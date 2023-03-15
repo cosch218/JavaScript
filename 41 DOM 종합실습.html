@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM 종합실습</title>
+</head>
+<body>
+    <h1>수정하기 전 제목입니다</h1>
+    <div>
+        <ul>
+            <li>첫번째 내용입니다</li>
+            <li>두번째 내용입니다</li>
+            <li>세번째 내용입니다</li>
+            <li>네번째 내용입니다</li>
+        </ul>
+        <ol>
+            <li>첫번째 내용입니다</li>
+            <li>두번째 내용입니다</li>
+            <li>세번째 내용입니다</li>
+            <li>네번째 내용입니다</li>
+        </ol>
+    </div>
+    <div class="main">
+        <p><span>빈 공간</span> 입니다</p>
+    </div>
+    <div class="footer">
+        <p>푸터영역입니다</p>
+    </div>
+
+    <script>
+        // DOM 객체를 가져와서 HTML 내용 수정
+        // h1 태그를 가져와서 수정
+        // 1) innerHTML로 값 수정
+        // 2) style - color와 backgroundcolor 수정
+        let h1 = document.querySelector("h1");
+        h1.innerHTML = "DOM 이용한 수정";
+        h1.style.color = "blue";
+        h1.style.backgroundColor = "lightgray";
+
+        // ul 태그를 가져와서 삭제/추가
+        // 1) ul 태그의 첫번째 자식 삭제
+        // 2) ul 태그에 li 태그 자식 추가 - li 태그를 가져와서 text 작성 후 ul에 추가
+        let ul = document.querySelector("ul");
+        ul.firstElementChild.remove();
+
+        let li = document.createElement("li");
+        li.innerHTML = "새로 추가한 노드요소입니다"
+        ul.appendChild(li);
+
+        // ol 태그를 가져와서 삭제/수정
+        // 1) 첫번재 자식 li 값 수정
+        // 2) 두번째 자식 li 삭제
+        // 3) 네번째 자식 li 삭제
+        let ol = document.querySelector("ol")
+        ol.firstElementChild.innerHTML = "내용을 바꾸었습니다";
+        ol.removeChild(ol.firstElementChild.nextElementSibling); // ol.children[2].remove(); 도 사용 가능
+        ol.removeChild(ol.lastElementChild);
+
+        // div class="main"의 p태그의 span태그를 가져와서 수정
+        // 1) style color = "red"
+        let span = document.querySelector("span");
+        span.style.color = "red";
+
+        // span 태그의 부모로 p태그에 접근해서 p태그 복제
+        // 동일한 내용을 수정없이 복제할 경우 변수에 넣지 않고 작성 가능
+        let p = span.parentNode;
+        let main = document.querySelector(".main");
+        // main.appendChild(p.cloneNode(true));
+        // main.appendChild(p.cloneNode(true));
+        // 위의 주석 내용을 for문으로 작성 : 여러번 반복해야할 경우에 코드를 더 간결하게 작성할 수 있다
+        for (let i=0; i<2; i++) {
+            main.appendChild(p.cloneNode(true));
+        }
+    </script>
+</body>
+</html>
