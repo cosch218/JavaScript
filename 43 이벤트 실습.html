@@ -9,30 +9,87 @@
 <body>
     <!-- input 태그와 button을 이용한 이벤트 연습 -->
     <p>숫자를 입력하면 구구단을 p 태그로 출력합니다</p>
-    <input type="number" id="dan" placeholder="숫자를 입력하세요" size="10">
-    <button onclick="gugudanPrint()">단 확인</button>
-    <div id="gugudan">
+    <input type="number" id="danP" placeholder="숫자를 입력하세요" size="10" min="1">
+    <button onclick="gugudanPrintP()">단 확인</button>
+    <div id="gugudanP">
         <p></p>
     </div>
+    <div id="child"></div>
+
+
+    <hr>
+
+    <p>숫자를 입력하면 구구단을 ul 태그로 출력합니다</p>
+    <input type="number" id="danUl" placeholder="숫자를 입력하세요" size="10" min="1">
+    <button onclick="gugudanPrintUl(), button_onclick()">단 확인</button>
+    <div id="gugudanUl"></div>
+    <div id="child"></div>
+
+
 
     <script>
-        let gugudan = document.querySelector("#gugudan")
-        let p = document.querySelector("#gugudan>p");
-        function gugudanPrint () {
+        // for문을 이용하여 구구단 출력
+        
+        // 1) p 태그로 출력 - innerHTML 사용
+        // 1단계. p 라는 이름의 변수가 p 태그에 접근할 수 있도록 저장 : querySelector("#gugudanP>p")
+        // 2단계. 변수 p 에 값을 공백으로 저장 : innerHTML
+        // 3단계. for문을 사용하여 변수 p 에 구구단 내용을 저장 : innerHTML
+        function gugudanPrintP () {
             // 구구단을 출력하기 위해 입력받은 숫자값 들고옴
-            let dan = document.querySelector("#dan").value;
-            // for문을 이용하여 구구단 출력
-            for (let i = 1; i<=9 ; i++) {
-                // p 태그에 넣기 전에 콘솔 창에서 먼저 확인
-                console.log(`${dan}X${i}=${i*Number(dan)}`);
-                // p 태그로 출력
-                let result = dan * i;
-                p.innerHTML = result;
-                gugudan.appendChild(p.cloneNode(true));
-                // ul 태그, li 태그를 생성하여 출력
+            let danP = document.querySelector("#danP").value;
+            let p = document.querySelector("#gugudanP>p");
+            p.innerHTML = "";
+            for (let i=1; i<=9; i++) {
+                // 바로 innerHTML로 할당을 하면 이전 값이 사라짐
+                // 이전 값을 살리기 위해 이전 문자열과 더해서 출력
+                p.innerHTML += `<p>${danP}X${i}=${i*Number(danP)}</p>`;
             }
-            gugudan.firstElementChild.remove();
         }
+            
+        // 2) ul 태그, li 태그를 생성하여 출력
+        // 1단계. ul 태그를 먼저 생성 : createElement('ul')
+        // 2단계. li 태그 안에 dan*(1~9)가 들어간 태그 9개 생성 : innerHTML
+        // 3단계. li 태그로 생성된 요소를 ul 태그에 추가  : appendChild()
+        // 4단계. ul 태그도 body에 추가 : appendChild()
+        // 5단계. 버튼을 누를 때마다 값이 밑으로 쌓이는 것을 입력한 값의 결과만 보이게 만들기
+        function gugudanPrintUl () {
+            // 구구단을 출력하기 위해 입력받은 숫자값 들고옴
+            let danUl = document.querySelector("#danUl").value;
+            let ul = document.createElement('ul');
+            let div = document.querySelector("#gugudanUl");
+            div.firstElementChild = null;
+            for (let i = 1; i <= 9; i++) {
+                let li = document.createElement('li');
+                li.innerHTML = `${danUl}X${i}=${i*Number(danUl)}`;
+                ul.appendChild(li);
+            }
+            div.appendChild(ul);
+        }
+        let count = 0;
+        function button_onclick () {
+            count++;
+            if (count >= 2) {
+                document.querySelector("#gugudanUl").firstChild.remove();
+            }
+        }
+
+        // function gugudanPrint에서 사용한 for문을 풀어 쓴 코드
+        let li = document.createElement("li");
+        li.innerHTML = "1";
+        document.querySelector("body").appendChild(li);
+
+        li = document.createElement("li");
+        li.innerHTML = "2";
+        document.querySelector("body").appendChild(li);
+
+        li = document.createElement("li");
+        li.innerHTML = "3";
+        document.querySelector("body").appendChild(li);
+
+        // 변수 할당
+        let num = 1;
+        num = 10;
+        num = 10 + 5;
     </script>
 </body>
 </html>

@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="./css/40 - style.css">
 </head>
 <body>
+    <!-- 아래 태그에 접근해서 내용 값 바꾸기 -->
+    <!-- innerHTML 사용 -->
     <h1 id="title">DOM</h1>
 
-    <p class="class-name">name</p>
+    <p class="class-name">내용을 작성하였습니다</p>
 
     <ol id="list">
         <li>a</li>
@@ -56,7 +58,7 @@
 
 
 
-        // HTML 요소 생성
+        // HTML 요소(태그) 생성
         let element = document.createElement("h1");
 
 
@@ -77,6 +79,7 @@
         classElement.innerHTML = "클래스를 통해서 수정된 내용입니다";
         let title2 = document.querySelector("#title");
         title2.innerHTML = "아이디를 들고와서 수정한 내용입니다";
+        title.innerHTML = "DOM";
 
         // querySelectorAll() : 모든 요소를 배열에 담아서 들고옴
         let listLi = document.querySelectorAll("#list>li");
@@ -115,6 +118,7 @@
 
         // Node : DOM 객체의 내용을 text, element, attribute로 구분
         // 객체를 글자와 태그와 속성으로 구분하는 단위
+        // .childNodes 에서 태그와 글자로 구분되어 들어가 있음
 
         // 노드로의 접근
         // 부모 : parentNode, parentElement

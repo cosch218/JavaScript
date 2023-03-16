@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트에서 함께 사용하는 함수와 DOM</title>
+</head>
+<body>
+    <h1 id="title" class="title">HTML 태그와 DOM 객체</h1>
+    <img class="image" src="./img/bird.jpg" alt="새이미지">
+    <form id="form" action="">
+        <a href="https://pixabay.com/ko/" target="_blank">픽사베이에서 가져온 이미지입니다</a>
+        <br>
+
+        <p>이름</p>
+        <input type="text" id="input" required>
+        <br>
+
+        <p>성별</p>
+        <input type="radio" name="gender" id="radio1" value="female"><span>여성</span>
+        <input type="radio" name="gender" id="radio1" value="male"><span>남성</span>
+        <br>
+
+        <p>좋아하는 과일 (중복 선택 가능)</p>
+        <input type="checkbox" id="checkbox1" name="fruit" value="apple" checked><span>사과</span>
+        <input type="checkbox" id="checkbox2" name="fruit" value="orange"><span>오렌지</span>
+        <input type="checkbox" id="checkbox3" name="fruit" value="strawberry"><span>딸기</span>
+        <input type="checkbox" id="checkbox4" name="fruit" value="peach"><span>복숭아</span>
+
+        <input type="date" id="date" min="2023-03-16">
+        <br>
+
+        <input type="submit" id="submit" value="제출">
+    </form>
+
+    <button id="btn2" onclick="printTest()">버튼 클릭하면 버튼 안의 글자가 바뀝니다</button>
+    <p id="p1" onmouseenter="changeColor1()">마우스를 올리면 글자가 빨간색으로 바뀝니다</p>
+    <p id="p2" onmouseenter="changeColor2()">마우스를 올리면 글자가 빨간색으로 바뀝니다</p>
+    <p id="p3" onmouseenter="changeColor3()" onmouseleave="changeColor4()">
+    마우스를 올리면 글자가 빨간색으로, 마우스가 태그 위치에서 빠져나가면 파란색으로 바뀝니다 <br>
+    (* 처음에는 검정색)
+    </p>
+    <p id="p4" onmouseenter="changeColor()" onmouseleave="changeColor()">
+        마우스를 올리면 글자가 빨간색으로, 마우스가 태그 위치에서 빠져나가면 파란색으로 바뀝니다 <br>
+        (* 처음에는 검정색, 하나의 함수만 이용)
+        </p>
+
+    <script>
+        /* DOM 속성 확인 */
+        let image = document.querySelector(".image");
+        let date = document.querySelector("#date");
+        console.log(image.src);
+        console.log(date.value);
+
+
+        /* 이벤트의 함수 작성 */
+        function printTest() {
+            let btn2 = document.querySelector("#btn2");
+            btn2.innerHTML= "안녕하세요";
+        }
+
+        function changeColor1() {
+            let p1 = document.querySelector("#p1");
+            p1.style.color="red";
+        }
+        function changeColor2() {
+            let p2 = document.querySelector("#p2");
+            p2.style.color = "blue";
+        }
+        function changeColor3() {
+            let p3 = document.querySelector("#p3");
+            p3.style.color ="red";
+        }
+        function changeColor4() {
+                let p3 = document.querySelector("#p3");
+                p3.style.color ="blue";
+        }
+        function changeColor() {
+            let p4 = document.querySelector("#p4");
+            if(p4.style.color == "red") {
+                p4.style.color = "blue";
+            } else {
+                p4.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
