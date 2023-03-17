@@ -1,0 +1,50 @@
+/* 기본 태그 디자인 */
+* { margin:0; padding:0; }
+ul { list-style: none; }
+a { text-decoration: none; color:black; }
+
+/* tab_menu */
+
+
+/* tab_menu의 list */
+.tab_menu .list {
+    /* 2. flex를 사용하여 li 태그 나열 */
+    display: flex;
+    /* 6. tab의 다음에 오는 HTML 태그가 list 다음 위치로 화면에 출력될 수 있도록 list의 높이 지정 */
+    height: 200px;
+    /* 8. margin-left 값 설정 */
+    margin-left: 20px;
+}
+
+/* a button */
+.tab_menu .list li .btn {
+    /*  7. a 태그의 마진과 폰트 크기 설정 */
+    padding : 0 10px;
+    font-size: 1.2rem;
+}
+.tab_menu .list li.on .btn {
+    /* 8. button을 눌렀을 때 보이는 button 디자인 */
+    color: white;
+    background-color: green;
+}
+
+/* contents */
+.tab_menu .list li .content {
+    /* 1. contents 크기 설정 */
+    box-sizing: border-box;
+    width: 500px;
+    height: 150px;
+    padding: 10px;
+    background-color: lightgray;
+    /* 3. content 전부 숨기기 */
+    display: none;
+    /* 5. position을 사용해서 content 위치 지정, 지금은 tab 하나만 구현하고 있어서 left:0 사용 */
+    position: absolute;
+    left: 0;
+    /* 9. position에 absolute 값을 썼기 때문에 감싸고 있는 list의 마진 값 따라가기 */
+    margin-left: 20px;
+}
+.tab_menu .list li.on .content {
+    /* 4. button을 눌렀을 때 보이는 content */
+    display: block;
+}

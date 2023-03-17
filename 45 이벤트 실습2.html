@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 실습2</title>
+    <style>
+        /* 3. 체크리스트으 li 요소를 배열로 들고 와서 동일한 이벤트 추가 */
+        .on {
+            text-decoration: line-through;
+            background-color: black;
+            /* 자바스크립트로 class 이름을 추가할 때 전환효과 사용 */
+            transition: background-color 0.5s;
+        }
+
+        /* 4. CSS만 사용해서 체크했을 때 디자인 추가 */
+        .list >li >input[type="checkbox"]:checked +span {
+            color: gray;
+            text-decoration: underline wavy;
+            /* 전환 효과 사용 가능 */
+            transition : all 0.5s;
+        }
+
+        /* 5. div 태그 안에 이미지 넣어서 이미지를 클릭 시 다른 이미지 출력,
+            CSS 백그라운드 이미지 바꾸기 */
+        .img {
+            width: 300px;
+            height: 450px;
+            background-image: url(./img/boho-g5d4b0036f_1280.jpg);
+            background-size: cover;
+            background-position: center;
+            transition : all 0.5s;
+        }
+        .change_img {
+            width: 300px;
+            height: 450px;
+            background-image: url(./img/berries-gfa86d92d6_1280.jpg);
+            background-size: cover;
+            background-position: center;
+            transition : all 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>이벤트 실습2</h1>
+    <!-- 1. 클릭하면 내용과 색상 변경 -->
+    <p id="p1" onclick="">눌러주세요</p>
+    <p id="p2" onclick="">눌러주세요</p>
+    <hr>
+
+
+    <!-- 2. 체크박스 클릭하면 li 글자 색상 변경 -->
+    <ol>
+        <li id="first_list">
+            <input type="checkbox" name="" id="checkbox1">
+            첫번째 리스트입니다
+        </li>
+        <li id="second_list">
+            <input type="checkbox" name="" id="checkbox2">
+            두번째 리스트입니다
+        </li>
+    </ol>
+    <hr>
+
+    <!-- 3. 체크리스트으 li 요소를 배열로 들고 와서 동일한 이벤트 추가 -->
+    <ol id="checklist1">
+        <li><input type="checkbox">첫번째</li>
+        <li><input type="checkbox">두번째</li>
+        <li><input type="checkbox">세번째</li>
+    </ol>
+    <ol id="checklist2">
+        <li><input type="checkbox">첫번째</li>
+        <li><input type="checkbox">두번째</li>
+        <li><input type="checkbox">세번째</li>
+    </ol>
+    <hr>
+
+    <!-- 4. CSS만 사용해서 체크했을 때 디자인 추가 -->
+    <ul class="list">
+        <li><input type="checkbox"><span>첫번째</span></li>
+        <li><input type="checkbox"><span>두번째</span></li>
+    </ul>
+    <hr>
+
+    <!-- 5. div 태그 안에 이미지 넣어서 이미지를 클릭 시 다른 이미지 출력,
+            CSS 백그라운드 이미지 바꾸기-->
+        <!-- 1) class img에 원래 이미지 넣기 -->
+        <!-- 2) class change-img에 다른 이미지로 바꾸기 -->
+    <div id="img1" class="img"></div>
+    <br>
+    <div id="img2" class="img"></div>
+
+
+
+
+    <script>
+        /* 1. 클릭하면 내용과 색상 변경 */
+        // 직접 짠 코드
+        const p1 = document.querySelector("#p1");
+        let clickCount = 0;
+        p1.addEventListener("click", function(e){
+            clickCount++;
+            e.target.innerHTML = "숨겨진 단어입니다";
+            e.target.style.color = "red";
+            if (clickCount%2==1) {
+                e.target.innerHTML = "눌러주세요";
+                e.target.style.color="";
+            }
+        })
+        // 선생님이 짠 코드
+        const p2 = document.querySelector("#p2");
+        p2.addEventListener("click", function(e) {
+            if (e.target.innerHTML !="숨겨진 단어입니다") {
+                e.target.innerHTML = "숨겨진 단어입니다";
+                e.target.style.color = "red";
+            } else {
+                e.target.innerHTML = "눌러주세요";
+                e.target.style.color="";
+            }
+        })
+
+
+        /* 2. 체크박스 클릭하면 li 글자 색상 변경 */
+        // 직접 짠 코드
+        const firstList = document.querySelector("#first_list");
+        const checkbox1 = document.querySelector("#checkbox1");
+        checkbox1.addEventListener ("change", function(e) {
+            if (e.target.checked == true) {
+                firstList.style.color = "lightgray";
+            } else (
+                firstList.style.color = ""
+            )
+        })
+        // 선생님이 짠 코드
+        const secondList = document.querySelector("#second_list");
+        const checkbox2 = document.querySelector("#checkbox2");
+        checkbox2.addEventListener("click", check);
+        function check(e) {
+            // li 태그의 색상을 lightgray로 수정
+            // input:checkbox == e.target
+            const li = e.target.parentNode;
+            // e.target의 checked가 true일 때만 색상 변경
+            if (e.target.checked == true) {
+                li.style.color = "lightgray";
+                // classList로 접근해서 add()함수 사용
+                li.classList.add("on");
+            } else {
+                li.style.color = "";
+                li.classList.remove("on");
+            }
+        }
+
+
+        /* 3. 체크리스트으 li 요소를 배열로 들고 와서 동일한 이벤트 추가 */
+        // 선생님이 짠 코드
+        const checkList2 = document.querySelectorAll("#checklist2>li>input[type='checkbox']");
+        for (let i = 0; i < checkList2.length; i++) {
+            checkList2[i].addEventListener("click", check)
+        }
+
+
+        /* 5. div 태그 안에 이미지 넣어서 이미지를 클릭 시 다른 이미지 출력,
+            CSS 백그라운드 이미지 바꾸기 */
+        // 직접 짠 코드
+        const img1 = document.querySelector("#img1");
+        img1.classList.remove("change_img");
+        img1.addEventListener("click", function(e){
+            if (e.target.classList == "img") {
+                e.target.classList.add("change_img");
+            } else {
+                e.target.classList.remove("change_img");
+                e.target.classList.add("img");
+            }
+        })
+        // 선생님이 짠 코드
+        const img2 = document.querySelector("#img2");
+        img2.addEventListener("click", function(e){
+            e.target.classList.toggle("change_img");
+        })
+    </script>
+</body>
+</html>

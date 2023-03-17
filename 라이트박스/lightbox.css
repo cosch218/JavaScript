@@ -1,0 +1,63 @@
+/* 태그의 디자인 */
+* { margin: 0; padding: 0; }
+ul { list-style: none; }
+
+
+/* text */
+.text {
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.text h1 {
+    margin-bottom: 15px;
+}
+
+.text p {
+    color: gray;
+}
+
+/* image-box */
+.image-box {
+    /* margin auto 는 block 태그가 width 값이 있을 때 사용 */
+    /* div는 안에 컨텐츠 크기가 커지면 그대로 밖으로 빠져 나가므로 그 크기를 확인해서 작성해야 한다 */
+    /* overflow: hidden; 을 사용하면 밖으로 빠져나가는 부분을 숨긴다 */
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* image-box 의 box */
+.image-box .box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* image-box 의 box의 pic */
+.image-box .box li .pic {
+    width: 150px;
+    height: 100px;
+}
+
+/* lightbox */
+#lightbox {
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    padding: 10vh 0;
+    /* 클래스를 통해서 block으로 바꿔도 되지만, 지금은 갯수가 몇 없기에 직접 접근해서 수정해도 된다 */
+    display: none;
+}
+
+/* lightbox 의 image */
+#lightbox img {
+    /* 이미지 크기를 화면에 맞춰서 크게 출력하기 위해 사진의 가로 세로 중 큰 크기로 출력 */
+    height: 80vh;
+    margin: auto;
+}

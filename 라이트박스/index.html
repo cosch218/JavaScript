@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>라이트박스</title>
+    <link rel="stylesheet" href="./lightbox.css">
+</head>
+<body>
+    <div class="text">
+        <h1>이미지박스</h1>
+        <p>사진을 클릭하면 사진이 전체화면으로 보입니다</p>
+        <p>썸네일은 작은 사진으로, 클릭하면 보이는 사진은 큰 사진으로 사용</p>
+    </div>
+
+    <!-- 작은 이미지(썸네일)가 보이는 공간 -->
+    <div class="image-box">
+        <ul class="box">
+            <!-- src : 썸네일 이미지로 쓰이는 작은 사진 -->
+            <!-- data-src : 클릭하면 보이는 큰 사진 -->
+            <!-- data- 속성 : 태그에는 영향을 미치지 않지만, DOM 속성으로 값을 전달할 수 있다 -->
+            <li><img class="pic" src="./img/corgi-gdca68e237_1280.jpg" data-src="./img/corgi-gdca68e237_1280.jpg"></li>
+            <li><img class="pic" src="./img/dog-g6ea155fb9_1280.jpg" data-src="./img/dog-g6ea155fb9_1280.jpg"></li>
+            <li><img class="pic" src="./img/dogs-gfd3356d18_1280.jpg" data-src="./img/dogs-gfd3356d18_1280.jpg"></li>
+        </ul>
+    </div>
+
+    <!-- 큰 이미지가 나오는 공간 -->
+    <div id="lightbox">
+        <!-- 자바스크립트에서 image-box의 data-src값을 아래 #image의 src속성의 값으로 넣어줄 예정이라 img 태그는 하나만 있으면 된다 -->
+        <img id="image" src="./img/corgi-gdca68e237_1280.jpg" alt="">
+    </div>
+
+    <script src="./lightbox.js"></script>
+</body>
+</html>
