@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공공데이터</title>
+</head>
+<body>
+    <h1>공공데이터 사용하기</h1>
+    <!-- data 버튼을 눌렀을 때 data-list에 식당이름과 메뉴 10개 출력하기-->
+    <button id="data">데이터 가져오기</button>
+    <ul id="data-list">
+    </ul>
+
+    <script>
+        // fetch 와 async/await 을 이용해서 가져오기
+        async function getPublicData() {
+            // fetch 안에 주소 넣기
+            // 공공데이터의 주소에 서비스키와 관련 정보를 이름=값&이름=값 과 같은 형태로 넣어서 요청할 수 있다
+            // 모든 공공데이터의 규칙이 같지 않기에 반드시 문서 참고
+            const promise = await fetch("https://busan-food.openapi.redtable.global/api/menu-dscrn/korean?serviceKey=xT7DWKrHC7KRLOqGQZ3TUukFd7sSAGz0aYegDTSlaLZQCdoEL6iNb6eOQrykthk7");
+            const response = await promise.json(); 
+            console.log(response);
+            // body의 0번째 인덱스 내용 console에 출력
+            console.log(response.body[0]);
+            // body의 0번째 인덱스의 MENU_NM console에 출력
+            console.log(response.body[0].MENU_NM);
+            console.log(response.body[0].RSTR_NM);
+
+            // 가져온 데이터를 append를 이용해서 출력
+            // h3 : 식당이름
+            // p : 메뉴이름
+            const h3 = document.createElement("h3");
+            h3.innerHTML = response.body[0].RSTR_NM;
+            const p = document.createElement("p");
+            p.innerHTML = response.body[0].MENU_NM;
+            const body = document.querySelector("body");
+            body.appendChild(h3);
+            body.appendChild(p);
+        }
+        getPublicData();
+        
+        // 버튼을 클릭했을 때 공공데이터를 가져오기
+        // 전역변수로 사용할 count
+        let count = 0;
+        let data="";
+        const dataBtn = document.querySelector("#data");
+        dataBtn.addEventListener("click", async function() {
+            const promise = await fetch("https://busan-food.openapi.redtable.global/api/menu-dscrn/korean?serviceKey=xT7DWKrHC7KRLOqGQZ3TUukFd7sSAGz0aYegDTSlaLZQCdoEL6iNb6eOQrykthk7");
+            
+            if(!promise.ok) {
+                console.log("값이 없습니다");
+                return -1;
+            }
+            
+            const response = await promise.json();
+            console.log(response);
+            // 전역변수에 response값을 저장해서 전달 가능
+            data = response;
+
+            // 0부터 9까지 인덱스 출력
+            // 1. 반복문을 통해 작성
+            // 2. 반복문 안에서 태그 생성, 추가
+            const dataList = document.querySelector("#data-list");
+            // i값을 통해서 인덱스의 위치 접근
+            // >> i값을 10씩 증가시키면 다른 값을 가져올 수 있다
+            // >> 1번 클릭할 때마다 count 값 1 증가
+            // >> i=10*count, i<10*count, i++ (i가 0일 때, 1일 때, 2일때 사용)
+            // count 값은 함수 바깥에 전역변수로 사용 
+            // >> 함수의 실행이 끝나도 값이 유지되어야하기 때문
+            for (let i = 10*count; i < 10+10*count; i++) {
+                console.log(response.body[i]);
+                const li = document.createElement("li");
+                li.innerHTML = response.body[i].RSTR_NM + " - " + response.body[i].MENU_NM;
+                dataList.appendChild(li);
+            }
+            // 한번 출력 후 count 증가
+            count++;
+        })
+    </script>
+</body>
+</html>
