@@ -1,0 +1,19 @@
+.box {
+    height: 200px;
+    background-color: lightblue;
+    border: 2px solid black;
+}
+
+.box-small {
+    height: 100px;
+    background-color: mediumpurple;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+    bottom: 0;
+}
