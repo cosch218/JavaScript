@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 버블링</title>
+</head>
+<body>
+    <h1>이벤트 전파 - 버블링</h1>
+    <p>하위태그의 이벤트가 발생했을 때 상위태그의 이벤트가 실행</p>
+    <div id="div-event" style="height: 100px; background-color: aquamarine;">
+        <p id="p-event">
+            p태그입니다
+            <span id="span-event">span 태그입니다</span>
+        </p>
+    </div>
+
+    <script>
+        const divEvent = document.querySelector("#div-event");
+        const pEvent = document.querySelector("#p-event");
+        const spanEvent = document.querySelector("#span-event");
+        // 이벤트가 실행되었을 때 실행될 타겟 이름 출력
+        function printTag(e) {
+            // 이벤트 버블링 제거
+            e.stopPropagation();
+            console.log(e.target);
+            console.log(e.currenttarget);
+        }
+        divEvent.addEventListener("click",printTag);
+        pEvent.addEventListener("click",printTag);
+        spanEvent.addEventListener("click",printTag);
+    </script>
+</body>
+</html>
